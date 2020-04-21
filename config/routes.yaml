@@ -8,4 +8,4 @@ shop:
 
 authorize:
     path: /authorize/{paymentType}
-    controller: App\Controller\DefaultController::authorize
+    controller: App\Controller\PaymentController::authorize
