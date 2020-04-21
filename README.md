@@ -14,8 +14,9 @@ Install
   3. use composer install 
   4. access http://localhost:8080
 
-Files:
-  For testing in postman import json file: Klarna-SLICE.postman_collection.json
+Files:  
+  For testing in postman import json file:  
+  Klarna-SLICE.postman_collection.json
   
     
   
