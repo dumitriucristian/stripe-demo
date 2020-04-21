@@ -18,7 +18,6 @@ class DefaultController extends AbstractController
     public function __construct(SessionInterface $session)
     {
         $this->session = $session;
-
         $this->paymentRequest = $this->paymentRequest();
         $this->token = $this->getToken();
         $this->session->set('klarna-token',$this->token);
@@ -76,10 +75,8 @@ class DefaultController extends AbstractController
 
     public function shop()
     {
-        $paymentObject = json_encode($this->paymentRequest);
         $availablePaymentMethods = $this->paymentRequest->klarna->payment_method_categories;
         $paymentMethods = $availablePaymentMethods ? explode(',', $availablePaymentMethods) : '';
-        $paymentToken = $this->token;
 
         return $this->render('shop.html.twig',
             [
