@@ -1,0 +1,6 @@
+framework:
+    test: true
+    session:
+        enabled: true
+        andler_id: null
+        storage_id: session.storage.mock_file

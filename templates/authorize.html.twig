@@ -1,0 +1,53 @@
+{% extends '/base.html.twig' %}
+
+{% block title %}Blog Index{% endblock %}
+{% block body %}
+
+    <script type="text/javascript">
+        //The following method initializes the Klarna Payments JS library
+        window.klarnaAsyncCallback = function () {
+            Klarna.Payments.init({
+                client_token: '{{ paymentToken }}'
+            });
+            console.log("Payments initialized");
+            //The following method loads the payment_method_category in the container with the id of 'klarna_container'
+            Klarna.Payments.load({
+                container: '#klarna_container',
+                payment_method_category: '{{paymentType}}'
+
+            }, function (res) {
+                console.log("Load function called");
+                console.log(res);
+            });
+        };
+
+        /*The following is the authorize function, which triggers Klarna to perform a risk assessment of the purchase
+          The successful response of this risk assessment is an authorization token, which in this example is logged in the console
+        */
+        $(function(){
+            $("button.authorize").on('click', function(){
+                Klarna.Payments.authorize({
+                    payment_method_category: '{{paymentType}}'
+
+                }, function(res) {
+                    console.log("Response from the authorize call:");
+                    console.log(res);
+                })
+            })
+        })
+    </script>
+
+
+    <div style="width: 500px; margin: auto; padding-top: 150px; padding-bottom: 30px;">
+        <img src="https://x.klarnacdn.net/payment-method/assets/badges/generic/klarna.svg"
+             style="width: 500px; margin: auto;">
+    </div>
+
+    <!--Klarna container-->
+    <div id="klarna_container" style="width: 500px; margin: auto;"></div>
+    <div style="width: 500px; margin: auto;">
+        <!--Button to trigger authorize call-->
+        <button class="authorize" style="width: 500px; height: 50px; margin: auto;">Your Buy Button</button>
+    </div>
+
+{% endblock %}

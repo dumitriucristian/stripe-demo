@@ -1,0 +1,11 @@
+index:
+    path: /
+    controller: App\Controller\DefaultController::index
+
+shop:
+    path: /shop
+    controller: App\Controller\DefaultController::shop
+
+authorize:
+    path: /authorize/{paymentType}
+    controller: App\Controller\DefaultController::authorize
