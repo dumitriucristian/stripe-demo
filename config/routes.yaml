@@ -1,10 +1,10 @@
 index:
     path: /
-    controller: App\Controller\DefaultController::index
+    controller: App\Controller\PaymentController::index
 
 shop:
     path: /shop
-    controller: App\Controller\DefaultController::shop
+    controller: App\Controller\PaymentController::shop
 
 authorize:
     path: /authorize/{paymentType}
