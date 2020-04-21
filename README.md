@@ -17,7 +17,12 @@ Install
 Files:  
   For testing in postman import json file:  
   Klarna-SLICE.postman_collection.json
-  
+
+Stripe Documentation available here: https://stripe.com/docs/sources/klarna
+
+There are two different implementations:
+ Branch master has the most simple implementation and a second a little bit more complex called service-test. 
+Switch branch to test both of them.
     
   
   
