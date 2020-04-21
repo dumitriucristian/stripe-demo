@@ -1,0 +1,251 @@
+{
+	"info": {
+		"_postman_id": "44cf5b57-1019-47ab-b02e-3f27005ea8a8",
+		"name": "Klarna SLICE",
+		"description": "Klarna slice",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "stripeKlarna Charge",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "sk_test_GStf3NdxGG7b1UhMcJ9MKxGR00KkwThP1C",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "amount",
+							"value": "10000",
+							"type": "text"
+						},
+						{
+							"key": "currency",
+							"value": "usd",
+							"type": "text"
+						},
+						{
+							"key": "source",
+							"value": "src_1GYlutK7DRp8dD4fATBkTM25",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://api.stripe.com/v1/charges",
+					"protocol": "https",
+					"host": [
+						"api",
+						"stripe",
+						"com"
+					],
+					"path": [
+						"v1",
+						"charges"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create source",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "sk_test_GStf3NdxGG7b1UhMcJ9MKxGR00KkwThP1C",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "type",
+							"value": "klarna",
+							"type": "text"
+						},
+						{
+							"key": "amount",
+							"value": "10000",
+							"type": "text"
+						},
+						{
+							"key": "currency",
+							"value": "usd",
+							"type": "text"
+						},
+						{
+							"key": "klarna[product]",
+							"value": "payment",
+							"type": "text"
+						},
+						{
+							"key": "klarna[purchase_country]",
+							"value": "US",
+							"type": "text"
+						},
+						{
+							"key": "klarna[custom_payment_methods]",
+							"value": "payin4,installments",
+							"type": "text"
+						},
+						{
+							"key": "source_order[items][0][type]",
+							"value": "sku",
+							"type": "text"
+						},
+						{
+							"key": "source_order[items][0][quantity]",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "source_order[items][0][amount]",
+							"value": "10000",
+							"type": "text"
+						},
+						{
+							"key": "source_order[items][0][currency]",
+							"value": "usd",
+							"type": "text"
+						},
+						{
+							"key": "source_order[items][0][description]",
+							"value": "Grey cotton shirt",
+							"type": "text"
+						}
+					],
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://api.stripe.com/v1/sources",
+					"protocol": "https",
+					"host": [
+						"api",
+						"stripe",
+						"com"
+					],
+					"path": [
+						"v1",
+						"sources"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Refund",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "sk_test_GStf3NdxGG7b1UhMcJ9MKxGR00KkwThP1C",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "charge",
+							"value": "py_1GYmpuK7DRp8dD4fY1RoOPtL",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://api.stripe.com/v1/refunds",
+					"protocol": "https",
+					"host": [
+						"api",
+						"stripe",
+						"com"
+					],
+					"path": [
+						"v1",
+						"refunds"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "basic",
+		"basic": [
+			{
+				"key": "password",
+				"value": "cthLrZmp765nvUUd",
+				"type": "string"
+			},
+			{
+				"key": "username",
+				"value": "PN02098_6dab4dbbfcce",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "a9e7a8f4-cec3-418b-a5eb-ce8333306765",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "b631cc32-040c-44b1-9ce1-5d0806a4b392",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
