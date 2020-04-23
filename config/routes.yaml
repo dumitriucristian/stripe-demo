@@ -7,5 +7,9 @@ shop:
     controller: App\Controller\PaymentController::shop
 
 authorize:
-    path: /load/{paymentType}
-    controller: App\Controller\PaymentController::load
+    path: /load/{paymentType}/{sourceId}
+    controller: App\Controller\LoadController::load
+
+charge:
+    path: /charge/{sourceId}
+    controller: App\Controller\LoadController::charge

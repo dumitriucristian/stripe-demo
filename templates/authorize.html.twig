@@ -41,6 +41,13 @@
                 }, function(res) {
                     console.log("Response from the authorize call:");
                     console.log(res);
+                    if(res.authorization_token)
+                    {
+                        console.log('succesfull order go to charge');
+                        setTimeout(function(){
+                            window.location.replace("http://localhost:8080/charge/{{sourceId}}" );
+                        },10000);
+                    }
                     if( (res.show_form === false ) && (res.approved === false )){
 
                         console.log('Disable Klarna’s widget and pre-select another payment method');
@@ -48,7 +55,12 @@
                     }else if ( (res.show_form === true ) && (res.approved === false ) ) {
                         console.log('Disable Klarna’s widget and pre-select another payment method');
                     }else if ((res.show_form === true ) && (res.approved === true )) {
-                        console.log('Authorization token received. Create order and redirect customer with authorization_token: ' . res.authorization_token );
+                        console.log('Authorization token received. Create order and redirect customer with authorization_token: ' + res.authorization_token );
+                        console.log('charge: http://localhost:8080/charge/{{sourceId}}');
+                        setTimeout(function(){
+                            window.location.replace("http://localhost:8080/charge/{{sourceId}}" );
+                        },10000);
+
                     }else{
                         console.log( 'unexpected error');
                     }
