@@ -7,5 +7,5 @@ shop:
     controller: App\Controller\PaymentController::shop
 
 authorize:
-    path: /authorize/{paymentType}
-    controller: App\Controller\PaymentController::authorize
+    path: /load/{paymentType}
+    controller: App\Controller\PaymentController::load

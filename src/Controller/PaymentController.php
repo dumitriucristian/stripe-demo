@@ -19,6 +19,7 @@ class PaymentController extends AbstractController
     public function __construct( StripeSource $stripe)
     {
         $this->source =  $stripe->create();
+        $this->token = $this->getToken();
     }
 
     public function index()
@@ -43,10 +44,10 @@ class PaymentController extends AbstractController
         return $this->render('shop.html.twig', ['paymentMethods' => $this->getPaymentMethods()]);
     }
 
-    public function authorize(Request $request)
+    public function load(Request $request)
     {
         $paymentType = $request->get('paymentType');
-        $paymentToken = $this->getToken();
+        $paymentToken = $this->token;
 
         return $this->render('authorize.html.twig', [
             'paymentType' => $paymentType,

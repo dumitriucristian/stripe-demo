@@ -23,7 +23,7 @@
         <div id="paymentButtons">
         <b>Your shoes are in the bascket. When do you wish to pay?</b>
         {% for payment in  paymentMethods %}
-            <a href="/authorize/{{ payment }}"><input type="button" value="{{ payment }}" class="pay" /></a>
+            <a href="/load/{{ payment }}"><input type="button" value="{{ payment }}" class="pay" /></a>
 
         {% endfor %}
     </div>
