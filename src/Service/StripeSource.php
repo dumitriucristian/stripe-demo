@@ -20,7 +20,12 @@ class StripeSource
             'klarna' => [
                 'product' => 'payment',
                 'purchase_country' => 'US',
-                'custom_payment_methods' => 'payin4,installments'
+                'custom_payment_methods' => 'payin4,installments',
+                'shipping_last_name' => 'john',
+                'shipping_first_name' => 'doe'
+            ],
+            'owner' => [
+                'email' => 'test@test.com'
             ],
             'source_order' => [
                 'items' => [
@@ -31,6 +36,15 @@ class StripeSource
                         'currency' => 'usd',
                         'description' => 'Grey cotton shirt'
                     ]
+                ],
+                'shipping' =>[
+                    'address' => [
+                        'line1' =>  'Some address',
+                        'country' =>'RO',
+                        'city' =>'Bucharest',
+                        'postal_code' => '65552',
+                    ],
+                    'name' => 'Wolverine'
                 ]
             ]
         ];
