@@ -3,18 +3,26 @@ stripe-demo
 A small demo stripe klarna app that use Symfony with phpfmp server.
 
 How it works:
- We need two distinct components. The klarna widget and the stripe source object.
+ We need three distinct components. The klarna widget, the stripe source, and the stripe source object.
 
  The klarna widget:
-  The klarna widget gives us access to the klarna object that has only two purposes:
+  The klarna widget has only two purposes:
   To Generates the form throgh the load method and Authorize the payment. 
-  The klarna widget is just a small peace of javascript code that will generate the form, that will guide the user through the payment     flow. When the user interact with the form, klarna is sending the data to stripe. Stripe will update the source object, that will       hold all the info about the payment status.
-
-  The stripe source:
-  The stripe source is a stripe endpoint that can generate and update a stripe object that contain all the payment information.
-  Through the stripe source we can manage the payment flow. 
-
+  The klarna widget is just a small peace of javascript code that will generate the form and will guide the user through the payment     flow. When the user interact with the form, the klarna widget will trigger an event that will notify klarna that a change has been made in the payment process.
   
+  The stripe source:
+  The stripe source is just a stripe api that can create or update the payment. We can make different requests to the stripe source that will change the payment flow. This way we can update, refund or cancel a payment, almost in any moment. On each interaction with the stripe api a stripe object is returned. 
+
+  The stripe object:  
+  The stripe object is just an object that is holding all the payment informations. Everithing. The state of the payment, the user data, the order data the shipment, payment methods available and so forth. 
+
+  The payment flow:
+   The payment flow can be different depending on the implementation but in this scenario we will give the user two payment options.
+    To pay later or to slice in four.
+  So, we have a anonym user that is the checkout page. We take his cart content, the order and make a request to the stripe source to create a new stripe object that will contain the cart order for the client in x country. The source object that we receive from the source api will tell us what payment methods are available for that order in that country. 
+   
+   When the user interact with the form, klarna is sending the data to stripe. Stripe, will update the source object, that will       hold all the info about the payment status.
+
   
 Requirements
   - docker  
