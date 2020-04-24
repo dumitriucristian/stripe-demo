@@ -19,8 +19,10 @@ How it works:
   The payment flow:
    The payment flow can be different depending on the implementation but in this scenario we will give the user two payment options.
     To pay later or to slice in four.
-  So, we have a anonym user that is the checkout page. We take his cart content, the order and make a request to the stripe source to create a new stripe object that will contain the cart order for the client in x country. The source object that we receive from the source api will tell us what payment methods are available for that order in that country. 
-   
+  So, we have an anonym user from US that is in the checkout page. We take his cart content, the order, and make a request to the stripe source to create a new stripe object that will contain the cart order for the client in x country. The source object that we receive from the source api will tell us what payment methods are available for that order in that country. 
+   Having multiple payment methods available we ask the user to choose how he will like to pay.
+   We take the user answer and assuming is slice in four we request the klarna widget to generate and load the form for slice in for.
+   Depending on the payment method the form will be different, with different fields and different validation rules
    When the user interact with the form, klarna is sending the data to stripe. Stripe, will update the source object, that will       hold all the info about the payment status.
 
   
