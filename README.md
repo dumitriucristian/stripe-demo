@@ -3,18 +3,18 @@
 ## A small demo stripe klarna app that use Symfony with phpfmp server.
 
 ### How it works
- We need three distinct components. The klarna widget, the stripe source, and the stripe source object.
+ We need three distinct components. *The klarna widget*, *the stripe source*, and the stripe *source object*.
 
  #### The klarna widget
   The klarna widget has only two purposes:
-  To Generates the form throgh the load method and Authorize the payment. 
+  To Generates the form through the load method and Authorize the payment. 
   The klarna widget is just a small peace of javascript code that will generate the form and will guide the user
   through the payment flow. When the user interact with the form, the klarna widget will trigger an event that will
   notify klarna that a change has been made in the payment process.
   
   #### The stripe source
   The stripe source is just a stripe api that can create or update the payment. We can make different requests to the 
-  stripe source that will change the payment flow. This way we can update, refund or cancel a payment, almost in any
+  stripe source that will change the payment flow. This way we can update, refund or cancel a payment, almost, in any
   moment. On each interaction with the stripe api a stripe object is returned. 
 
   #### The stripe object
@@ -28,9 +28,9 @@
    To pay later or to slice in four.
    We have an anonymous user from US, that is in the checkout page. 
   ###### Create the stripe source    
-   We take his cart content, the order, and make a request to the stripe source to create a new stripe object 
+   We take the cart content, the order, and make a request to the stripe source to create a new stripe object 
    that will contain the cart order for the client in X country and optional, what payment we wold like to offer.     
-   The source object, that we will receive from the source api as an answer to our request will tell us what payment
+   The source object, that we will receive from the source api, as an answer to our request, will tell us what payment
    methods are available for that order in that country and we can load the form.
    
    Side note: Shipping information
@@ -39,11 +39,11 @@
    ##### Create the klarna widget and load the payment form
    Having multiple payment methods available, we can ask the user to choose how he will like to pay.
    We take the user answer, and assuming is slice in four, we request the klarna widget to generate and load the form
-   for slice in for.
+   for slice in four.
    Depending on the payment method, the form will be different, with different fields and different validation rules. 
    
    
-   #### Authorization klarna will send the data to stripe and stripe, will update the source object, 
+   #### Authorization klarna will send the data to stripe, and stripe will update the source object, 
    When the user interact with the form the request will be sent to klarna that will check the validity of the request 
    and will authorize the payment returning an authorization id.
    
@@ -104,7 +104,7 @@ Create a Charge to charge the payment if the authorize token is received from th
 Charge request need the source id and the source order
 
 If the charge is successful it will generate a charge id that can be used for a refund if required.
-A full working demo  can be found on github here: https://github.com/dumitriucristian/stripe-demo/tree/service-test 
+
 A simpler working demo can be found on github here: https://github.com/dumitriucristian/stripe-demo 
  
 This is WIP and new branch with different implementation will be added.
