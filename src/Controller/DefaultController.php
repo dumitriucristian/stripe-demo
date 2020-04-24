@@ -40,7 +40,7 @@ class DefaultController extends AbstractController
                 'auth_basic' => 'sk_test_GStf3NdxGG7b1UhMcJ9MKxGR00KkwThP1C',
                 'body' => [
                     'type' => 'klarna',
-                    'amount' => 10000,
+                    'amount' => 3400,
                     'currency' => 'usd',
                     'klarna' => [
                         'product' => 'payment',
@@ -52,7 +52,7 @@ class DefaultController extends AbstractController
                             0 => [
                                 'type' => 'sku',
                                 'quantity' => 1,
-                                'amount' => 10000,
+                                'amount' => 3400,
                                 'currency' => 'usd',
                                 'description' => 'Grey cotton shirt'
                             ]

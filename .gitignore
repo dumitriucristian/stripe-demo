@@ -3,3 +3,4 @@
 composer.lock
 symfony.lock
 /var/
+/nginx-server/logs/

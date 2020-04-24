@@ -1,11 +1,15 @@
 index:
     path: /
-    controller: App\Controller\DefaultController::index
+    controller: App\Controller\PaymentController::index
 
 shop:
     path: /shop
-    controller: App\Controller\DefaultController::shop
+    controller: App\Controller\ShopController::shop
 
 authorize:
-    path: /authorize/{paymentType}
-    controller: App\Controller\DefaultController::authorize
+    path: /load/{paymentType}/{sourceId}
+    controller: App\Controller\LoadController::load
+
+charge:
+    path: /charge/{sourceId}
+    controller: App\Controller\LoadController::charge

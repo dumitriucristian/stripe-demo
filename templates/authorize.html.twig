@@ -18,11 +18,20 @@
             }, function (res) {
                 console.log("Load function called");
                 console.log(res);
+                if(res.show_form === true)
+                {
+                    console.log('valid request - continue');
+                }
+
+                if(res.show_form === false){
+                    console.log('invalid request - display error');
+                }
             });
         };
 
         /*The following is the authorize function, which triggers Klarna to perform a risk assessment of the purchase
           The successful response of this risk assessment is an authorization token, which in this example is logged in the console
+          https://developers.klarna.com/documentation/klarna-payments/single-call-descriptions/authorize-the-purchase/
         */
         $(function(){
             $("button.authorize").on('click', function(){
@@ -32,6 +41,33 @@
                 }, function(res) {
                     console.log("Response from the authorize call:");
                     console.log(res);
+                    if(res.authorization_token)
+                    {
+                        console.log('succesfull order go to charge');
+                        setTimeout(function(){
+                            window.location.replace("http://localhost:8080/charge/{{sourceId}}" );
+                        },10000);
+                    }
+                    if( (res.show_form === false ) && (res.approved === false )){
+
+                        console.log('Disable Klarna’s widget and pre-select another payment method');
+
+                    }else if ( (res.show_form === true ) && (res.approved === false ) ) {
+                        console.log('Disable Klarna’s widget and pre-select another payment method');
+                    }else if ((res.show_form === true ) && (res.approved === true )) {
+                        console.log('Authorization token received. Create order and redirect customer with authorization_token: ' + res.authorization_token );
+                        console.log('charge: http://localhost:8080/charge/{{sourceId}}');
+                        setTimeout(function(){
+                            window.location.replace("http://localhost:8080/charge/{{sourceId}}" );
+                        },10000);
+
+                    }else{
+                        console.log( 'unexpected error');
+                    }
+
+                    if(res.show_form === false){
+                        console.log('invalid request - display error');
+                    }
                 })
             })
         })
