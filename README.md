@@ -18,7 +18,7 @@
   moment. On each interaction with the stripe api a stripe object is returned. 
 
   #### The stripe object
-  The stripe object is just an object that is holding all the payment informations. Everithing. The state of the payment, 
+  The stripe object is an object that is holding all the payment informations. Everithing. The state of the payment, 
   the user data, the order data the shipment, payment methods available and so forth. 
 
   #### The payment flow:
@@ -29,10 +29,13 @@
    We have an anonymous user from US, that is in the checkout page. 
   ###### Create the stripe source    
    We take his cart content, the order, and make a request to the stripe source to create a new stripe object 
-   that will contain the cart order for the client in X country and optional what payment we wold like to offer.     
+   that will contain the cart order for the client in X country and optional, what payment we wold like to offer.     
    The source object, that we will receive from the source api as an answer to our request will tell us what payment
    methods are available for that order in that country and we can load the form.
    
+   Side note: Shipping information
+   If selling a physical product that must be shipped, shipping information is required. If not provided during creation,        shipping information should be provided in a source update.
+
    ##### Create the klarna widget and load the payment form
    Having multiple payment methods available, we can ask the user to choose how he will like to pay.
    We take the user answer, and assuming is slice in four, we request the klarna widget to generate and load the form
@@ -44,7 +47,7 @@
    When the user interact with the form the request will be sent to klarna that will check the validity of the request 
    and will authorize the payment returning an authorization id.
    
-   #### Update
+ 
    
    
 
