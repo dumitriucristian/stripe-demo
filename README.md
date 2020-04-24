@@ -1,7 +1,19 @@
 stripe-demo
 
-A small demo stripe klarna app that use: 
-  Symfony with phpfmp server
+A small demo stripe klarna app that use Symfony with phpfmp server.
+
+How it works:
+ We need two distinct components. The klarna widget and the stripe source object.
+
+ The klarna widget:
+  The klarna widget gives us access to the klarna object that has only two purposes:
+  To Generates the form throgh the load method and Authorize the payment. 
+  The klarna widget is just a small peace of javascript code that will generate the form, that will guide the user through the payment     flow. When the user interact with the form, klarna is sending the data to stripe. Stripe will update the source object, that will       hold all the info about the payment status.
+
+  The stripe source:
+  The stripe source is a stripe endpoint that can generate and update a stripe object that contain all the payment information.
+  Through the stripe source we can manage the payment flow. 
+
   
   
 Requirements
@@ -63,16 +75,10 @@ Charge request need the source id and the source order
 
 If the charge is successful it will generate a charge id that can be used for a refund if required.
 A full working demo  can be found on github here:
-
-https://github.com/dumitriucristian/stripe-demo/tree/service-test - You don't have permissions to view 
-Try another account
- 
+https://github.com/dumitriucristian/stripe-demo/tree/service-test 
 
 A simpler working demo can be found on github here:
-https://github.com/dumitriucristian/stripe-demo - You don't have permissions to view 
-Try another account
+https://github.com/dumitriucristian/stripe-demo 
  
 
 This is WIP and new branch with different implementation will be added.
-  
-  
