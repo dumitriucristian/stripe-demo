@@ -4,7 +4,7 @@ index:
 
 shop:
     path: /shop
-    controller: App\Controller\PaymentController::shop
+    controller: App\Controller\ShopController::shop
 
 authorize:
     path: /load/{paymentType}/{sourceId}
